@@ -1,0 +1,31 @@
+ColorsFromImage
+===============
+
+Find colors from an example image, which can be used to provide theme colors
+matching an uploaded logo. 
+
+Inspired by http://blog.dabbledb.com/2007/04/white--or-green.html
+
+It uses RMagick / ImageMagick to find interesting colors from an image
+based on saturation, luminance, and the histogram.
+
+Installation
+============
+
+Rails 2.1:
+
+./script/plugin install git://github.com/Fudge/colors_from_image.git
+
+Rails 2.0.2:
+
+cd vendor/plugins; git clone git://github.com/Fudge/colors_from_image.git
+
+Example
+=======
+
+ColorsFromImage.get_colors('/path/to/logo.jpg') # => ["#020202", "#fb680d", "#dc8e53", "#9f643f"]
+
+The first result is the background color (nil if the image is transparent), and the following entries
+are the interesting colors sorted by relevance. 
+
+Copyright (c) 2008 Erlend Simonsen, released under the MIT license
