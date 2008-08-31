@@ -13,7 +13,7 @@ module ColorsFromImage
 
    def self.to_hex(c)
       return if c.nil?
-      "#%02x%02x%02x" % [(c.red / 65535.0 * 256).to_i,(c.green / 65535.0 * 256).to_i,(c.blue / 65535.0 * 256).to_i]
+      "#%02x%02x%02x" % [(c.red / (MaxRGB + 1.0) * 256).to_i,(c.green / (MaxRGB + 1.0) * 256).to_i,(c.blue / (MaxRGB + 1.0) * 256).to_i]
    end
 
    def self.color_difference(c1,c2)
@@ -77,7 +77,7 @@ module ColorsFromImage
 
          new_color = true
          colors.each do |col|
-            new_color = false if self.color_difference(col,c[0]) < 25000
+            new_color = false if self.color_difference(col,c[0]) < (MaxRGB * 0.381)
          end
 
          if new_color
