@@ -4,7 +4,7 @@ include Magick
 module ColorsFromImage
 
    def self.light?(c)
-     Pixel.from_color(c).intentsity >= 32000
+     Pixel.from_color(c).intensity >= (MaxRGB / 2.0)
    end 
 
    def self.dark?(c)
