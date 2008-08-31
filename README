@@ -25,6 +25,10 @@ Example
 
 ColorsFromImage.get_colors('/path/to/logo.jpg') # => ["#020202", "#fb680d", "#dc8e53", "#9f643f"]
 
+background, primary, secondary, tertiary = ColorsFromImage.get_colors('/path/to/logo.jpg')
+text_color = ColorsFromImage.dark?(background) ? "#fff" : "#333"
+
+
 The first result is the background color (nil if the image is transparent), and the following entries
 are the interesting colors sorted by relevance. 
 

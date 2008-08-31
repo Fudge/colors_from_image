@@ -2,6 +2,15 @@ require 'RMagick'
 include Magick
 
 module ColorsFromImage
+
+   def self.light?(c)
+     Pixel.from_color(c).to_HSL[2] >= 0.5
+   end 
+
+   def self.dark?(c)
+     Pixel.from_color(c).to_HSL[2] < 0.5
+   end 
+
    def self.to_hex(c)
       return if c.nil?
       "#%02x%02x%02x" % [(c.red / 65536.0 * 256).to_i,(c.green / 65536.0 * 256).to_i,(c.blue / 65536.0 * 256).to_i]
